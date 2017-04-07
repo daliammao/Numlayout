@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="red">#ff0000</color>
+    <color name="trans">#00000000</color>
+    <color name="feng_ge_xian">#D7D7D7</color>
+    <!--购物车边框主要颜色-->
+    <color name="cart_stroke_main_color">#cecece</color>
+</resources>
