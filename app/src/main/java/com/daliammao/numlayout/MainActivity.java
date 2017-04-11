@@ -37,6 +37,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //指定的tag被触发了+或减的动作，要怎么处理？通过返回值返回处理后的新值。返回null会默认加或减tolerance
+        numLayout.setOnNumComputeHandler(new NumLayout.OnNumComputeHandler() {
+            @Override
+            public String onNormalTextComputeHandler(String tag, CharSequence oldText, NumLayout.Operation action, float minNum, float maxNum, float tolerance) {
+                return null;
+            }
+
+            @Override
+            public Integer onIntegerNumComputeHandler(String tag, int oldNum, NumLayout.Operation action, int minNum, int maxNum, int tolerance) {
+                return null;
+            }
+
+            @Override
+            public Float onDecimalNumComputeHandler(String tag, float oldNum, NumLayout.Operation action, float minNum, float maxNum, float tolerance) {
+                return null;
+            }
+        });
+
+        //当指定tag发生错误，会在这里触发，可以返回处理后的新值，返回null会进行默认处理
         numLayout.setOnIntegerErrorListenerWithTag("Text", new OnIntegerErrorListener() {
             @Override
             public Integer onIntegerError(ErrorType errorType, int newData, int min, int max, int tolerance) {
@@ -58,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //最后的输入结果在这里监听
         numLayout.setOnInputListener(new NumLayout.OnInputListener() {
             @Override
             public void onInputComplete(NumLayout parent, String tag, String text, float min, float max, float tolerance) {
@@ -72,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 if(bottom < oldBottom){
 
                 }else if(bottom > oldBottom){
+                    //如果使用软键盘进行编辑，输入完成后需要调用该函数
                     numLayout.confirmEditDataWithTag("Text");
                 }
             }
